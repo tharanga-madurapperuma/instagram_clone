@@ -1,0 +1,46 @@
+.leftMenu div img{
+    margin-right: 15px;
+}
+
+.leftMenu{
+    width: 15%;
+}
+
+.feedSection{
+    width: 62%;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.feedSection::-webkit-scrollbar{
+    display: none;
+}
+
+.followers{
+    width: 23%;
+    margin-left: -40px;
+    height: 95vh;
+    overflow-y: scroll;
+}
+
+.followers::-webkit-scrollbar{
+    display: none;
+}
+
+.feedSection_story{
+    margin: 0 12.7%;
+    overflow-x: scroll;
+}
+
+.feedSection_story::-webkit-scrollbar{
+    display: none;
+}
+
+.feedSection_post{
+    padding-top: 30px;
+}
+
+.speration-line{
+    height: 85vh;
+    margin-top: 50px;
+}

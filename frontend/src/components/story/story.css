@@ -1,0 +1,23 @@
+.story_outline{
+    background: linear-gradient(240deg, var(--color-pink), var(--color-orange), var(--color-yellow));
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+}
+
+.story_image{
+    width: 93%;
+    height: 93%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.story_image img{
+    width: 93%;
+    height: 93%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 35px;
+}
