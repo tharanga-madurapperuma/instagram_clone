@@ -16,6 +16,9 @@ const Images = {
     share: require('./icons/SharePosts.png'),
     save: require('./icons/Save.png'),
     girl:require('./girl.jpg'),
+    emoji: require('./icons/Emoji.png'),
+    upArrow: require('./icons/Arrow.png'),
+    send: require('./icons/SharePosts.png'),
 }
 
 export default Images

@@ -6,37 +6,41 @@ import Post from '../../components/post/Post'
 import Follower from '../../components/follower/Follower'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+
+  const navigation = useNavigate();
+
   return (
     <div className='flex flex-row'>
       <div className="leftMenu justify-items-start text-gray-800 m-10">
         {/* left menu */}
-        <div className="mt-0 mb-20">
-          <img src={Images.logo} alt="logo" />
+        <div className="mt-0 mb-20 cursor-pointer">
+          <img src={Images.logo} alt="logo" onClick={() => {navigation("/")}}/>
         </div>
 
-        <div className="flex my-10 flex-row">
+        <div className="flex my-10 flex-row cursor-pointer" onClick={() => {navigation("/")}}>
           <img src={Images.home_fill} alt="home" />
           <span>Home</span>
         </div>
-        <div className="flex flex-row my-10">
+        <div className="flex flex-row my-10 cursor-pointer" onClick={() => {navigation("/search")}}>
           <img src={Images.search} alt="search" />
           <span>Search</span>
         </div>
-        <div className="flex flex-row my-10">
+        <div className="flex flex-row my-10 cursor-pointer" onClick={() => {navigation("/createPost")}}>
           <img src={Images.newPost} alt="newPost" />
           <span>Create Post</span>
         </div>
-        <div className="flex flex-row my-10">
+        <div className="flex flex-row my-10 cursor-pointer" onClick={() => {navigation("/profile")}}>
           <img src={Images.profile} alt="profile" />
           <span>Profile</span>
         </div>
-        <div className='flex flex-row my-10'>
+        <div className='flex flex-row my-10 cursor-pointer' onClick={() => {navigation("/settings")}}>
           <img src={Images.settings} alt="settings" />
           <span>Settings</span>
         </div>
-        <div className='flex flex-row my-10'>
+        <div className='flex flex-row my-10 cursor-pointer' onClick={() => {navigation("/")}}>
           <img src={Images.logout} alt="logout" />
           <span>Logout</span>
         </div>
