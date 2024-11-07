@@ -6,6 +6,7 @@ import Post from './containers/post/Post';
 import Profile from './containers/profile/Profile';
 import SignIn from './containers/signIn/SignIn';
 import SignUp from './containers/signUp/SignUp';
+import Settings from './containers/settings/Settings';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/editProfile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
             </Routes>
           </BrowserRouter>
         </div>
