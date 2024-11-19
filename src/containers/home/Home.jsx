@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Images from '../../assets/images'
 import './home.css'
 import Story from '../../components/story/Story'
@@ -7,10 +7,15 @@ import Follower from '../../components/follower/Follower'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useNavigate } from 'react-router-dom';
+import CreatePost from '../post/CreatePost'
 
 const Home = () => {
 
   const navigation = useNavigate();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
 
   return (
     <div className='flex flex-row'>
@@ -28,9 +33,10 @@ const Home = () => {
           <img src={Images.search} alt="search" />
           <span>Search</span>
         </div>
-        <div className="flex flex-row my-10 cursor-pointer" onClick={() => {navigation("/createPost")}}>
+        <div className="flex flex-row my-10 cursor-pointer" onClick={openModal}>
           <img src={Images.newPost} alt="newPost" />
           <span>Create Post</span>
+          <CreatePost isOpen={modalIsOpen} onRequestClose={closeModal} />
         </div>
         <div className="flex flex-row my-10 cursor-pointer" onClick={() => {navigation("/profile")}}>
           <img src={Images.profile} alt="profile" />
