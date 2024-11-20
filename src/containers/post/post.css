@@ -10,6 +10,8 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    outline: none;
+    z-index: 1000;
   }
   
   .overlay {
@@ -19,4 +21,19 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  .dragdrop label{
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 8px;
+    font-size: 0.75rem;
+  }
+
+  .dragdrop input{
+    display: none;
   }

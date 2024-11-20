@@ -19,6 +19,7 @@ const Images = {
     emoji: require('./icons/Emoji.png'),
     upArrow: require('./icons/Arrow.png'),
     send: require('./icons/SharePosts.png'),
+    dragDrop: require('./icons/dragDrop.png'),
 }
 
 export default Images

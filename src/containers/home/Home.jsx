@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Images from '../../assets/images'
 import './home.css'
 import Story from '../../components/story/Story'
@@ -13,9 +13,20 @@ const Home = () => {
 
   const navigation = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [closeModal, setCloseModal] = useState(true);
 
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.querySelector(".feedSection_story").classList.add('storyVisible');
+    } else {
+      document.querySelector(".feedSection_story").classList.remove('storyVisible');
+    }
+  }, [modalIsOpen]);
+
+  useEffect(() => {
+    setModalIsOpen(false);
+    setCloseModal(true);
+  }, [closeModal]);
 
   return (
     <div className='flex flex-row'>
@@ -33,12 +44,14 @@ const Home = () => {
           <img src={Images.search} alt="search" />
           <span>Search</span>
         </div>
-        <div className="flex flex-row my-10 cursor-pointer" onClick={openModal}>
+        <div className="flex flex-row my-10 cursor-pointer" onClick={() => {
+            setModalIsOpen(true);
+          }}>
           <img src={Images.newPost} alt="newPost" />
           <span>Create Post</span>
-          <CreatePost isOpen={modalIsOpen} onRequestClose={closeModal} />
+          <CreatePost open={modalIsOpen} onClose={() => {setCloseModal(false)}}/>
         </div>
-        <div className="flex flex-row my-10 cursor-pointer" onClick={() => {navigation("/profile")}}>
+        <div className="flex flex-row my-10 cursor-pointer" onClick={() => {navigation("/profile")}}>   
           <img src={Images.profile} alt="profile" />
           <span>Profile</span>
         </div>
@@ -60,8 +73,7 @@ const Home = () => {
           <Swiper
             spaceBetween={5}
             slidesPerView={8}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            
           >
             <SwiperSlide><Story /></SwiperSlide>
             <SwiperSlide><Story /></SwiperSlide>
