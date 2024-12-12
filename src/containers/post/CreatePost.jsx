@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './post.css'
 import Modal from 'react-modal';
 import Images from '../../assets/images';
+import ProfileNameIcon from '../../components/profile/ProfileNameIcon';
 
 Modal.setAppElement('#root');
 
@@ -82,8 +83,8 @@ const CreatePost = ({open, onClose}) => {
         </div>}
         {file && <div className='flex'>
             <img className='newPostImage' src={URL.createObjectURL(file)} alt=''/>
-            <div className='flex flex-col w-[300px] h-full'>
-              kddjfdfjdk
+            <div className='flex flex-col w-[400px] h-full'>
+              <ProfileNameIcon />
             </div>
           </div>}
       </div>
