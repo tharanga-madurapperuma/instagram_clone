@@ -8,11 +8,32 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import CreatePost from "../post/CreatePost";
+import axios from "axios";
+
+const BASE_URL = "http://localhost:8080";
 
 const Home = () => {
+    const [posts, setPosts] = useState([]);
     const navigation = useNavigate();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [closeModal, setCloseModal] = useState(true);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const response = await axios.get(`${BASE_URL}/users/getAllUser`);
+            setUsers(response.data);
+        };
+        fetchUsers();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get(`${BASE_URL}/getAllPosts`);
+            setPosts(response.data);
+        };
+        fetchData();
+    }, []);
 
     useEffect(() => {
         if (modalIsOpen) {
@@ -31,6 +52,7 @@ const Home = () => {
         setCloseModal(true);
     }, [closeModal]);
 
+    console.log(users);
     return (
         <div className="flex flex-row">
             <div className="leftMenu justify-items-start text-gray-800 m-10">
@@ -152,32 +174,19 @@ const Home = () => {
                     </Swiper>
                 </div>
                 <div className="feedSection_post">
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
+                    {
+                        /* post section */
+                        posts.map((post) => (
+                            <Post post={post} />
+                        ))
+                    }
                 </div>
             </div>
             <div className="followers justify-items-center pr-10 mt-5 pt-5">
-                {/* followers list */}
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
-                <Follower />
+                {/* All users*/}
+                {users.map((user) => (
+                    <Follower user={user} />
+                ))}
             </div>
         </div>
     );
