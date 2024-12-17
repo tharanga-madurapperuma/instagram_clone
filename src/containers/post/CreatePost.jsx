@@ -19,13 +19,17 @@ const CreatePost = ({ open, onClose }) => {
     // Drop handle
     const handleDrop = (e) => {
         e.preventDefault();
-        const droppedFile = e.dataTransfer.files[0];
+        if (isDragOver) {
+            const droppedFile = e.dataTransfer.files[0];
 
-        if (
-            droppedFile.type.startsWith("image/") ||
-            droppedFile.type.startsWith("video/")
-        ) {
-            setFile(droppedFile);
+            if (
+                droppedFile.type.startsWith("image/") ||
+                droppedFile.type.startsWith("video/")
+            ) {
+                setFile(droppedFile);
+            }
+        } else {
+            alert("Please select an image");
         }
     };
 
