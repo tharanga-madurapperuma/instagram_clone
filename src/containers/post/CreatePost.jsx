@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./createPost.css";
-import Modal from "react-modal";
 import Images from "../../assets/images";
 import ProfileNameIcon from "../../components/profile/ProfileNameIcon";
+import ReactModal from "react-modal";
 
-Modal.setAppElement("#root");
+ReactModal.setAppElement("#root");
 
 const CreatePost = ({ open, onClose }) => {
     const [modelOpen, setModelOpen] = useState(false);
@@ -22,14 +22,11 @@ const CreatePost = ({ open, onClose }) => {
         if (isDragOver) {
             const droppedFile = e.dataTransfer.files[0];
 
-            if (
-                droppedFile.type.startsWith("image/") ||
-                droppedFile.type.startsWith("video/")
-            ) {
+            if (droppedFile.type.startsWith("image/")) {
                 setFile(droppedFile);
             }
         } else {
-            alert("Please select an image");
+            alert("Please select an image only");
         }
     };
 
@@ -63,7 +60,7 @@ const CreatePost = ({ open, onClose }) => {
     };
 
     return (
-        <Modal
+        <ReactModal
             isOpen={modelOpen}
             onRequestClose={() => {
                 setModelOpen(false);
@@ -121,7 +118,7 @@ const CreatePost = ({ open, onClose }) => {
                     </div>
                 )}
             </div>
-        </Modal>
+        </ReactModal>
     );
 };
 
