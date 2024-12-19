@@ -3,6 +3,8 @@ import "./createPost.css";
 import Images from "../../assets/images";
 import ProfileNameIcon from "../../components/profile/ProfileNameIcon";
 import ReactModal from "react-modal";
+import axios from "axios";
+import Data from "../../fetchData";
 
 ReactModal.setAppElement("#root");
 
@@ -57,6 +59,49 @@ const CreatePost = ({ open, onClose }) => {
         } else {
             setFile(null);
             alert("Please select image or video file");
+        }
+    };
+
+    // After create ost button clicked this method happens
+    const handleClicked = async () => {
+        if (!file) {
+            alert("Please select a file");
+            return;
+        }
+
+        try {
+            const formData = new FormData();
+            formData.append("image", file); // Append the file with the key 'image'
+
+            const fileUploadResponse = await axios.post(
+                Data.fileStore.uploadFile,
+                formData, // Send the FormData instance
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data", // Required for file uploads
+                    },
+                }
+            );
+
+            // Use response.data directly for the next request
+            const fileUrl = fileUploadResponse.data;
+
+            const response = await axios.post(Data.posts.addPost, {
+                description: description,
+                userId: "U2",
+                likeCount: 0,
+                imageUrl: fileUrl, // Use fileUrl here
+            });
+
+            if (response.status === 201) {
+                alert("Post created successfully!");
+                setFile(null);
+                setDescription("");
+                onClose();
+            }
+        } catch (error) {
+            console.error("Error creating post:", error);
+            alert("Failed to create post. Please try again.");
         }
     };
 
@@ -118,7 +163,14 @@ const CreatePost = ({ open, onClose }) => {
                                     setDescription(e.target.value);
                                 }}
                             ></textarea>
-                            <button className="post-button align">Post</button>
+                            <button
+                                className="post-button align"
+                                onClick={() => {
+                                    handleClicked();
+                                }}
+                            >
+                                Post
+                            </button>
                             <p className="text-gray-500 text-xs mt-5">
                                 &copy; instagram clone, developed by Tharanga
                                 Madurapperuma, Rusiru Erandaka and Harshana
