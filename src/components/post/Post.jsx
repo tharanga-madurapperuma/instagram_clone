@@ -63,7 +63,10 @@ const Post = ({ post }) => {
 
             <div className="post_image my-5">
                 <div className="image-outline">
-                    <img src={`./${post?.imageUrl}`} alt="PostPicture" />
+                    <img
+                        src={`${Data.fileStore.downloadPost}${post.imageUrl}`}
+                        alt="PostPicture"
+                    />
                 </div>
             </div>
             <div className="post_bottom">

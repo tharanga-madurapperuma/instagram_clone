@@ -21,8 +21,12 @@ const Data = {
         addComment: `${BASE_URL}/addComment`,
     },
     fileStore: {
-        uploadFile: `${BASE_URL}/upload`,
-        downloadFile: `${BASE_URL}/download/`,
+        uploadPost: `${BASE_URL}/uploadPost`,
+        downloadPost: `${BASE_URL}/downloadPost/`,
+        uploadStory: `${BASE_URL}/uploadStory`,
+        downloadStory: `${BASE_URL}/downloadStory/`,
+        uploadUser: `${BASE_URL}/uploadUser`,
+        downloadUser: `${BASE_URL}/downloadUser/`,
     },
     mail: {
         sendMail: `${BASE_URL}/registration/`,

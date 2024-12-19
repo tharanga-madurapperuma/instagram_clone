@@ -74,7 +74,7 @@ const CreatePost = ({ open, onClose }) => {
             formData.append("image", file); // Append the file with the key 'image'
 
             const fileUploadResponse = await axios.post(
-                Data.fileStore.uploadFile,
+                Data.fileStore.uploadPost,
                 formData, // Send the FormData instance
                 {
                     headers: {
