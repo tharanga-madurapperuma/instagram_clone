@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./post.css";
 import EmojiPicker from "emoji-picker-react";
 import axios from "axios";
-
-const BASE_URL = "http://localhost:8080";
+import Data from "../../fetchData";
 
 const Post = ({ post }) => {
     const [comment, setComment] = useState("");
@@ -13,7 +12,7 @@ const Post = ({ post }) => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get(
-                `${BASE_URL}/users/getUserById/${post.userId}`
+                Data.users.getUserById + post.userId
             );
             setUser(response.data);
         };
@@ -45,7 +44,7 @@ const Post = ({ post }) => {
                     <div className="content_data ml-3">
                         <div className="data-user-name-date flex items-center">
                             <div className="username text-base font-medium">
-                                {user?.firstname} {user?.lastname}
+                                {user?.firstName} {user?.lastName}
                             </div>
                             <div className="mx-2 bg-gray-500 mt-1"></div>
                             <div className="date text-gray-500 ml-0">1d</div>
