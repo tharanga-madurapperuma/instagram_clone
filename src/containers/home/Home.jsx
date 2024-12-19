@@ -9,8 +9,7 @@ import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import CreatePost from "../post/CreatePost";
 import axios from "axios";
-
-const BASE_URL = "http://localhost:8080";
+import Data from "../../fetchData";
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -21,7 +20,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await axios.get(`${BASE_URL}/users/getAllUser`);
+            const response = await axios.get(Data.users.getAllUsers);
             setUsers(response.data);
         };
         fetchUsers();
@@ -29,7 +28,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`${BASE_URL}/getAllPosts`);
+            const response = await axios.get(Data.posts.getAllPosts);
             setPosts(response.data);
         };
         fetchData();

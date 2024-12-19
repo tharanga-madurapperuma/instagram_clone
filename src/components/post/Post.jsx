@@ -33,7 +33,11 @@ const Post = ({ post }) => {
                     <div className="content-image">
                         <div className="image">
                             <img
-                                src={`./${user?.userImage}`}
+                                src={
+                                    !user?.userImage
+                                        ? "./assets/users/general.jpg"
+                                        : `./${user.userImage}`
+                                }
                                 alt="Profile"
                             ></img>
                         </div>
@@ -41,7 +45,7 @@ const Post = ({ post }) => {
                     <div className="content_data ml-3">
                         <div className="data-user-name-date flex items-center">
                             <div className="username text-base font-medium">
-                                {user?.name}
+                                {user?.firstname} {user?.lastname}
                             </div>
                             <div className="mx-2 bg-gray-500 mt-1"></div>
                             <div className="date text-gray-500 ml-0">1d</div>
@@ -57,9 +61,7 @@ const Post = ({ post }) => {
                     <img src="./assets/icons/More.png" alt="More" />
                 </div>
             </div>
-            <div className="mt-2 text-gray-700 font-normal">
-                {post.description}
-            </div>
+
             <div className="post_image my-5">
                 <div className="image-outline">
                     <img src={`./${post?.imageUrl}`} alt="PostPicture" />
@@ -94,13 +96,9 @@ const Post = ({ post }) => {
                     </p>
                 </div>
                 <div className="bottom-user-name">
-                    <p>
-                        Tharanga Sandun
-                        <span className="text-blue-900">
-                            {" "}
-                            #insta #free #tharanga
-                        </span>
-                    </p>
+                    <div className="mt-2 text-gray-700 font-normal">
+                        {post.description}
+                    </div>
                 </div>
                 <div className="bottom-add_comment">
                     <div className="flex flex-col">
