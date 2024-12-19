@@ -10,6 +10,7 @@ const CreatePost = ({ open, onClose }) => {
     const [modelOpen, setModelOpen] = useState(false);
     const [isDragOver, setIsDragOver] = useState(false);
     const [file, setFile] = useState("");
+    const [description, setDescription] = useState("");
 
     // Use effect to handle open and close modal
     useEffect(() => {
@@ -91,7 +92,7 @@ const CreatePost = ({ open, onClose }) => {
                         <input
                             type="file"
                             id="file-upload"
-                            accept="image/*, video/*"
+                            accept="image/*"
                             onChange={handleOnChange}
                         />
                     </div>
@@ -112,8 +113,17 @@ const CreatePost = ({ open, onClose }) => {
                             </div>
                             <textarea
                                 rows={5}
-                                className="w-full bg-slate-100 mt-5 p-5"
+                                className="w-full bg-slate-100 mt-5 p-5 post-textarea"
+                                onChange={(e) => {
+                                    setDescription(e.target.value);
+                                }}
                             ></textarea>
+                            <button className="post-button align">Post</button>
+                            <p className="text-gray-500 text-xs mt-5">
+                                &copy; instagram clone, developed by Tharanga
+                                Madurapperuma, Rusiru Erandaka and Harshana
+                                Rathnayaka.
+                            </p>
                         </div>
                     </div>
                 )}
