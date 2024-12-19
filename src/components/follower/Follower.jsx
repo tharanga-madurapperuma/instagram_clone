@@ -23,7 +23,7 @@ const Follower = ({ user }) => {
                     <div className="content_data ml-3">
                         <div className="data-user-name-date flex items-center">
                             <div className="username text-base font-medium">
-                                {user?.firstname} {user?.lastname}
+                                {user?.firstName} {user?.lastName}
                             </div>
                         </div>
                         <div className="data-caption">
